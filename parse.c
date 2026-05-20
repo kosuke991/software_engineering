@@ -39,7 +39,6 @@ extern FILE *outfile;
 
 int rear_addr = 0;
 int label_counter = 0;
-int label_num = 0;
 char *grammer;
 
 typedef struct {
