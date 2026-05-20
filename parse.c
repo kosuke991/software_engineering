@@ -39,7 +39,6 @@ extern FILE *outfile;
 
 int rear_addr = 0;
 int label_counter = 0;
-char *grammer;
 
 typedef struct {
 	int addr;
@@ -97,8 +96,6 @@ void error(char *s){
 }
 
 void outblock(void){
-	grammer = "outblock";
-
 	if (tok.attr == RWORD && tok.value == VAR) {
 		do {
 			getsym();
@@ -124,8 +121,6 @@ void outblock(void){
 }
 
 void statement(void){
-	grammer = "statement";
-
 	if (tok.attr == IDENTIFIER) {
 		int addr = search_addr();
 		getsym();
@@ -226,8 +221,6 @@ void load_number(char *rd) {
 
 /*計算結果はr1に格納される*/
 void expression(void) {
-	grammer = "expression";
-
 	if (tok.attr == NUMBER) {
 		gen_loadi("r1");
 	} else if (tok.attr == IDENTIFIER) {
@@ -280,7 +273,6 @@ void expression(void) {
 
 /*条件式が偽であれば引数の番号のラベルに飛ぶ*/
 void condition(int label) {
-	grammer = "condition";
 
 	expression();
 	gen_loadr("r2", "r1");
